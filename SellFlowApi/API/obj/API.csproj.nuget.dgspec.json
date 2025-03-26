@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\SellFlow\\SellFlowApi\\API\\API.csproj": {}
+    "C:\\Users\\User\\SellFlow\\sellflowapi\\api\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\SellFlow\\SellFlowApi\\API\\API.csproj": {
+    "C:\\Users\\User\\SellFlow\\sellflowapi\\api\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\SellFlow\\SellFlowApi\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\User\\SellFlow\\sellflowapi\\api\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\User\\SellFlow\\SellFlowApi\\API\\API.csproj",
+        "projectPath": "C:\\Users\\User\\SellFlow\\sellflowapi\\api\\API.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\SellFlow\\SellFlowApi\\API\\obj\\",
+        "outputPath": "C:\\Users\\User\\SellFlow\\sellflowapi\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",

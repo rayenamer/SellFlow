@@ -147,3 +147,12 @@ C:\Users\User\SellFlow\sellflowapi\api\bin\Debug\net8.0\runtimes\win-arm64\nativ
 C:\Users\User\SellFlow\sellflowapi\api\bin\Debug\net8.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\User\SellFlow\sellflowapi\api\bin\Debug\net8.0\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\User\SellFlow\sellflowapi\api\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\User\SellFlow\sellflowapi\api\bin\Debug\net8.0\Google.Apis.dll
+C:\Users\User\SellFlow\sellflowapi\api\bin\Debug\net8.0\Google.Apis.Auth.dll
+C:\Users\User\SellFlow\sellflowapi\api\bin\Debug\net8.0\Google.Apis.Auth.AspNetCore3.dll
+C:\Users\User\SellFlow\sellflowapi\api\bin\Debug\net8.0\Google.Apis.Core.dll
+C:\Users\User\SellFlow\sellflowapi\api\bin\Debug\net8.0\Google.Apis.Drive.v3.dll
+C:\Users\User\SellFlow\sellflowapi\api\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
+C:\Users\User\SellFlow\sellflowapi\api\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\User\SellFlow\sellflowapi\api\bin\Debug\net8.0\System.Management.dll
+C:\Users\User\SellFlow\sellflowapi\api\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Management.dll
