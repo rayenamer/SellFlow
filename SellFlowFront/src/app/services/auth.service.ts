@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 import { User } from '../models/user';
-import { map } from 'rxjs';
+import { catchError, map, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -31,15 +31,19 @@ export class AuthService {
     )
   }
 
-  register(model: any) {
+  register(model: any){
     return this.http.post<User>(this.baseUrl + 'Register_Login/register', model).pipe(
-      map(user =>{
-        if (user){
+      map((user) => {
+        if (user) {
           this.setCurrentUser(user);
         }
         return user;
+      }),
+      catchError((error) => {
+        // Pass the error to the component (you can modify this logic based on the error structure)
+        return throwError(() => new Error(error));  // Or modify based on how you want to handle it
       })
-    )
+    );
   }
 
   logout() {

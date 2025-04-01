@@ -1,15 +1,21 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 import { importProvidersFrom } from '@angular/core';
-import { ToastrModule } from 'ngx-toastr';
+import { provideToastr, ToastrModule } from 'ngx-toastr';
+import { ResponseInterceptor } from './app/interceptors/response-interceptor.interceptor';
+import { authInterceptor } from './app/interceptors/auth.interceptor';
+import {provideAnimations} from '@angular/platform-browser/animations'
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideHttpClient(),
+    provideHttpClient(withInterceptors([authInterceptor,ResponseInterceptor])),
     provideRouter(routes),
-    importProvidersFrom(ToastrModule.forRoot()) // ✅ Add this
+    provideToastr({
+      positionClass: 'toast-bottom-right'
+     }),
+    provideAnimations(),
   ]
 }).catch(err => console.error(err));
