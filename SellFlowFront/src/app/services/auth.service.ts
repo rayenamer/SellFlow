@@ -31,5 +31,21 @@ export class AuthService {
     )
   }
 
+  register(model: any) {
+    return this.http.post<User>(this.baseUrl + 'Register_Login/register', model).pipe(
+      map(user =>{
+        if (user){
+          this.setCurrentUser(user);
+        }
+        return user;
+      })
+    )
+  }
+
+  logout() {
+    localStorage.removeItem('user');
+    this.currentUser.set(null);
+  }
+
   
 }

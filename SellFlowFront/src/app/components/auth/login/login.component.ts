@@ -1,13 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { ToastrService, ToastrModule } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-login',
     standalone: true, 
-    imports: [FormsModule, ToastrModule], // ✅ Ensure ToastrModule is imported
+    imports: [RouterModule,FormsModule, ToastrModule,RouterOutlet], // ✅ Ensure ToastrModule is imported
     templateUrl: './login.component.html',
     styleUrl: './login.component.css'
 })
@@ -28,6 +28,7 @@ export class LoginComponent {
       error: error => {
         this.toastr.error(error.error); // ✅ Ensure toastr is working
         this.isLoading = false;
+        this.toastr.error(error.error); 
       }
     })
   }

@@ -3,9 +3,11 @@ import { authGuard } from './guards/auth.guard';
 import { LoginComponent } from './components/auth/login/login.component';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from './components/auth/register/register.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'login', component: LoginComponent },
+    {path: 'registerservice', component: RegisterComponent},
     { path: '**', component: HomeComponent, pathMatch: 'full' },
 ];

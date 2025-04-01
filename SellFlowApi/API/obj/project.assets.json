@@ -3922,11 +3922,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\SellFlow\\sellflowapi\\api\\API.csproj",
+      "projectUniqueName": "C:\\Users\\User\\SellFlow\\SellFlowApi\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "C:\\Users\\User\\SellFlow\\sellflowapi\\api\\API.csproj",
+      "projectPath": "C:\\Users\\User\\SellFlow\\SellFlowApi\\API\\API.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\SellFlow\\sellflowapi\\api\\obj\\",
+      "outputPath": "C:\\Users\\User\\SellFlow\\SellFlowApi\\API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -4023,13 +4023,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.407/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1900",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Une erreur s’est produite lors de l’obtention des données de vulnérabilité du package : Impossible de charger l'index de service pour la source https://api.nuget.org/v3/index.json."
-    }
-  ]
+  }
 }
