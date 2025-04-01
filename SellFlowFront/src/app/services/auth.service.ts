@@ -41,7 +41,7 @@ export class AuthService {
       }),
       catchError((error) => {
         // Pass the error to the component (you can modify this logic based on the error structure)
-        return throwError(() => new Error(error));  // Or modify based on how you want to handle it
+        return throwError(() => new Error(error));  // you should see it
       })
     );
   }

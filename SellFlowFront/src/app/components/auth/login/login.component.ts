@@ -25,11 +25,21 @@ export class LoginComponent {
         console.log(this.authService.currentUser()?.username);
         this.isLoading = true;
       },
-      error: error => {
-        this.toastr.error(error.error); // ✅ Ensure toastr is working
+      error: (error) => {
+        const errorTitle = error?.error?.title;
+        const message = errorTitle === 'Unauthorized' 
+          ? 'Wrong email or password' 
+          : errorTitle === 'Invalid username' ||'One or more validation errors occurred' 
+          ? 'Please write your credentials' 
+          : errorTitle || 'An error occurred';
+        
+        this.toastr.error(message);
         this.isLoading = false;
-        this.toastr.error(error.error); 
       }
+      
+      
+      
+      
     })
   }
 }
