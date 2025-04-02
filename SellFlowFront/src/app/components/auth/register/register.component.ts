@@ -3,13 +3,13 @@ import { AuthService } from '../../../services/auth.service';
 import { Router, RouterModule } from '@angular/router';
 import { ToastrService, ToastrModule } from 'ngx-toastr';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { JsonPipe } from '@angular/common';
+import { JsonPipe, NgIf } from '@angular/common';
 @Component({
-  selector: 'app-register',
-  standalone: true,
-  imports: [ JsonPipe  ,ReactiveFormsModule, RouterModule, ToastrModule],
-  templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+    standalone: true,
+    selector: 'app-register',
+    imports: [JsonPipe, ReactiveFormsModule, RouterModule, ToastrModule,NgIf],
+    templateUrl: './register.component.html',
+    styleUrl: './register.component.css'
 })
 export class RegisterComponent implements OnInit {
   authService = inject(AuthService);
@@ -34,10 +34,9 @@ export class RegisterComponent implements OnInit {
       Password: new FormControl( '', [
         Validators.required,
         Validators.minLength(6),
-        Validators.maxLength(8),
         this.passwordRequiresDigit(),
         this.passwordRequiresLower(),
-        this.passwordRequiresLower(),
+        this.passwordRequiresUpper(),
         this.passwordRequiresUniqueChars(),
       ])
     });
@@ -45,50 +44,44 @@ export class RegisterComponent implements OnInit {
   }
   passwordRequiresDigit(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-      const regex = /\d/;
-      return regex.test(control.value) ? null : { PasswordRequiresDigit: 'Passwords must have at least one digit.' };
+      const hasDigit = /[0-9]/.test(control.value);
+      return hasDigit ? null : { passwordRequiresDigit: true };
     };
   }
-
+  
   passwordRequiresLower(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-      const regex = /[a-z]/;
-      return regex.test(control.value) ? null : { PasswordRequiresLower: 'Passwords must have at least one lowercase letter.' };
+      const hasLower = /[a-z]/.test(control.value);
+      return hasLower ? null : { passwordRequiresLower: true };
     };
   }
-
+  
   passwordRequiresUpper(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-      const regex = /[A-Z]/;
-      return regex.test(control.value) ? null : { PasswordRequiresUpper: 'Passwords must have at least one uppercase letter.' };
+      const hasUpper = /[A-Z]/.test(control.value);
+      return hasUpper ? null : { passwordRequiresUpper: true };
     };
   }
-
+  
   passwordRequiresUniqueChars(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-      const value = control.value;
-      const uniqueChars = new Set(value.split(''));
-      return uniqueChars.size < value.length
-        ? { PasswordRequiresUniqueChars: 'Passwords must use at least one different character.' }
-        : null;
+      const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(control.value);
+      return hasSpecial ? null : { passwordRequiresUniqueChars: true };
     };
   }
+  
 
   register() {
-    console.log(this.registerForm.value,this.registerForm.status);
-    //this.isLoading = true;
-    //console.log("Register form values:", this.registerForm.value);
-    //this.authService.register(this.registerForm.value).subscribe({
-    //  next: _ => {
-//
-    //    console.log("success")
-    //  },
-    //  error: (error) => {
-    //    this.validationErrors = error;
-//
-    //},
-    //
-    //});
+    this.authService.register(this.registerForm.value).subscribe({
+      next: _ => {
+
+        console.log("success")
+      },
+      error: (error) => {
+        
+    },
+    
+    });
   }
 
 }
