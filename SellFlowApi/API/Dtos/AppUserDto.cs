@@ -11,4 +11,5 @@ public class AppUserDto
     public required string PhoneNumber { get; set; }
     public required string Email { get; set; }
     public required string Token {get; set;}
+    public bool EmailConfirmed { get;  set; }
 }
