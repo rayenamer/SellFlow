@@ -25,6 +25,8 @@ public class Register_LoginController
     {
         var user = mapper.Map<AppUser>(registerDto);
 
+        var userExist = await userManager.FindByEmailAsync(registerDto.Email);
+        if(userExist!=null) return BadRequest("Email already Signed");
         //
         user.EmailConfirmed = !registerDto.requiredEmailConfirmation;
         //
@@ -66,7 +68,7 @@ public class Register_LoginController
             Country = registerDto.Country,
             PhoneNumber = user.PhoneNumber ?? "",
             Email = user.Email ?? "",
-            EmailConfirmed = false // Indicate email needs confirmation
+            EmailConfirmed = true // Indicate email needs confirmation
         };
 
     });
@@ -93,17 +95,20 @@ public class Register_LoginController
         var user = await userManager.Users
             .FirstOrDefaultAsync(x =>
                 x.NormalizedEmail == loginDto.Email.ToUpper());
-        if (user?.EmailConfirmed == false)
-        {
-            _logger.LogInformation($"EmailConfirmed: {user?.EmailConfirmed}");
-            return Unauthorized("Email not confirmed. Please check your inbox.");
-        }
-
-
+        _logger.LogInformation($"User: {user?.UserName}, EmailConfirmed: {user?.EmailConfirmed}");
         if (user == null || user.Email == null)
         {
             return Unauthorized("Invalid username");
         }
+       
+        //if (!user.EmailConfirmed)
+        //{
+        //    // If the email is not confirmed, reject login attempt
+        //    return Unauthorized("Email is not confirmed.");
+        //}
+
+
+        
 
         var result = await userManager.CheckPasswordAsync(user, loginDto.Password);
         if (!result) return Unauthorized();
@@ -119,6 +124,9 @@ public class Register_LoginController
             PhoneNumber = user.PhoneNumber ?? "",
         };
     }
+
+
+     
 
 
 }

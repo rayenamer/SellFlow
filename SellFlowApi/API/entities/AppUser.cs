@@ -1,4 +1,5 @@
 using System;
+using EllipticCurve.Utils;
 using Microsoft.AspNetCore.Identity;
 
 namespace API.Entities;
@@ -13,4 +14,5 @@ public class AppUser : IdentityUser<int>
         public required string city{get;set;}
         public required string Country{get;set;}
         public ICollection<AppUserRole> UserRoles { get; set; } = [];
+
 }
