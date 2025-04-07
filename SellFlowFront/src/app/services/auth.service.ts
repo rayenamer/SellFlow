@@ -36,6 +36,7 @@ export class AuthService {
       map((user) => {
         if (user) {
           this.setCurrentUser(user);
+          
         }
         return user;
       }),

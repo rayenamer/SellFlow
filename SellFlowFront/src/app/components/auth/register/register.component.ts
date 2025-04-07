@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
-import { Router, RouterModule } from '@angular/router';
+import { RedirectCommand, Router, RouterModule } from '@angular/router';
 import { ToastrService, ToastrModule } from 'ngx-toastr';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { JsonPipe, NgIf } from '@angular/common';
@@ -76,6 +76,8 @@ export class RegisterComponent implements OnInit {
       next: _ => {
 
         console.log("success")
+        this.toastr.info("a link was sent to your mail to confirm your identity")
+        this.router.navigateByUrl('/login');
       },
       error: (error) => {
         

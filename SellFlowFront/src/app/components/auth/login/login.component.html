@@ -5,8 +5,8 @@
             <p>Please enter your credentials</p>
         </div>
 
-        @if(!authService.currentUser())
-        {<form (ngSubmit)="login()" class="login-form">
+      
+        <form (ngSubmit)="login()" class="login-form">
             <div class="form-group">
                 <label for="username">Email</label>
                 <input [(ngModel)]="model.email" name="username" class="form-control" placeholder="Enter your username">
@@ -30,7 +30,7 @@
             <div class="login-footer">
                 <a class="cta-button" routerLink="/registerservice" >Go to Register</a>
             </div>
-        </form>}
+        </form>
     </div>
 </div>
 <router-outlet></router-outlet>
